@@ -1,4 +1,4 @@
-GO_BUILD_COREDNS := GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=${CGO_ENABLED} go build -v
+GO_BUILD_COREDNS = GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=0 go build -v
 
 COREDNS_REPO ?= https://github.com/coredns/coredns
 COREDNS_VERSION ?= $(shell go  list -m  -f '{{.Version}}' github.com/coredns/coredns)
