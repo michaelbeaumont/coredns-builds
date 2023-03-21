@@ -1,7 +1,11 @@
 on:
   workflow_dispatch: {}
   pull_request: {}
-  push: {}
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
 
 jobs:
   build:
