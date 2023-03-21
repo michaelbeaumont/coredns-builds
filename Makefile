@@ -53,3 +53,6 @@ clean/build/out:
 
 .PHONY: clean
 clean: clean/build clean/src
+
+get-version:
+	@echo $(COREDNS_VERSION)
