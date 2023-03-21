@@ -14,5 +14,5 @@ In practice this is all done in a github action.
 
 ## Releasing a new version
 
-Once everything is updated just push a tag and github actions will create a release with the binaries.
-We usually just use the coredns tag. So for example: `git tag v1.10.1; git push origin --tag`
+If the version in `main` changes, a build of the binaries of that version is triggered and a release is created if one does not yet exist.
+You can also manually trigger the workflow on a given commit, which also allows a release to be recreated.
