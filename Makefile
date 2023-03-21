@@ -1,5 +1,3 @@
-GO_BUILD_COREDNS := GOOS=${GOOS} GOARCH=${GOARCH} CGO_ENABLED=${CGO_ENABLED} go build -v
-
 COREDNS_REPO ?= https://github.com/coredns/coredns
 COREDNS_VERSION ?= $(shell go  list -m  -f '{{.Version}}' github.com/coredns/coredns)
 TOP := $(shell pwd)
@@ -28,7 +26,7 @@ endif
 	shasum -a 256 $@ > $@.sha256
 
 build/bin/%/coredns: src/coredns/core/dnsserver/zdirectives.go
-	cd src/coredns; $(SYSTEM) go build -v -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$$(git describe --dirty --always)" -o $(TOP)/$@
+	cd src/coredns; CGO_ENABLED=0 $(SYSTEM) go build -v -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$$(git describe --dirty --always)" -o $(TOP)/$@
 
 .PHONY: tar
 tar:
